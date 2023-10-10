@@ -1,5 +1,5 @@
 
-# bruno-cli-demo
+# bruno-user-guide
 
 **Chinese** | [English](/README_EN.md)
 
