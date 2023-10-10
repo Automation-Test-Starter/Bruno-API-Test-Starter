@@ -1,0 +1,19 @@
+{
+  "name": "bruno-cli-demo",
+  "version": "1.0.0",
+  "description": "a cli demo repository by bruno",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bruno",
+    "bruno-cli",
+    "api-test"
+  ],
+  "author": "naodeng-tw",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@usebruno/cli": "^0.14.0"
+  }
+}
