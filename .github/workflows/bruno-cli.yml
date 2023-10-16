@@ -15,9 +15,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: npm install
-    - name: install bru-cli
-      run: npm i @usebruno/cli -g
-    - name: Change directory
-      run: cd api-collections
     - name: run tests
       run: bru run --env demo

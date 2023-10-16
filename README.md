@@ -304,26 +304,21 @@ expect(data.title).to.contains('provident');
 - [x] 新建项目文件夹（示例名为:bruno-test）
 - [x] 项目文件夹下执行 npm init 将项目初始化为 npm 项目
 - [x] 安装 @usebruno/cli 依赖 (脚本为：npm install @usebruno/cli)
-- [x] 打开保存 API 请求集的文件夹目录，将 api-collects 目录复制到 bruno-test 项目目录下下
+- [x] 打开保存 API 请求集的文件夹目录，将 api-collects 目录下的所有文件都复制到 bruno-test 项目目录下下
 - [x] 项目目录如下所示
 
 ```javascript
 bruno-test   //项目主文件夹
-  api-collects //api 请求集
-    api request1.bru //api 请求
-    enviroments //环境变量
-      demo.bru
-    bruno.json
+  api request1.bru //api 请求
+  enviroments //环境变量
+    demo.bru
+  bruno.json
   node_modules //node 包依赖
   package-lock.json
   package.json //npm 项目配置文件
 ```
 
-- [x] 先进入 api-collects 目录，再运行接口自动化脚本
-
-```bash
- cd api-collects
-```
+- [x] 运行接口自动化脚本
 
  ```javascript
  bruno run --env demo
