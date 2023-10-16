@@ -18,4 +18,4 @@ jobs:
     - name: Change directory
       run: cd api-collections
     - name: run tests
-      run: npm test
+      run: bru run --env demo
