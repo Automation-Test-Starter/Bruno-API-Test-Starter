@@ -1,0 +1,29 @@
+meta {
+  name: api request1
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{host}}/posts/1
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+  res.body.id: eq 1
+  res.body.title: contains provident
+}
+
+tests {
+  test("res.status should be 200", function() {
+    const data = res.getBody();
+    expect(res.getStatus()).to.equal(200);
+  });
+  test("res.body should be correct", function() {
+    const data = res.getBody();
+    expect(data.id).to.equal(1);
+  expect(data.title).to.contains('provident');
+  });
+}

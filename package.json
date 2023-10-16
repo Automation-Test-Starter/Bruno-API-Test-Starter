@@ -1,7 +1,7 @@
 {
-  "name": "bruno-cli-demo",
+  "name": "Bruno API Test Starter",
   "version": "1.0.0",
-  "description": "a cli demo repository by bruno",
+  "description": "a Bruno API Test cli demo repository by bruno",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
