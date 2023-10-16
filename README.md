@@ -319,7 +319,7 @@ bruno-test   //项目主文件夹
   package.json //npm 项目配置文件
 ```
 
-- [x]先进入 api-collects，再运行接口自动化脚本
+- [x] 先进入 api-collects 目录，再运行接口自动化脚本
 
 ```bash
  cd api-collects
