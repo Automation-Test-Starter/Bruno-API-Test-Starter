@@ -1,7 +1,42 @@
-
 # bruno-user-guide
 
 **中文** | [English](/README_EN.md)
+- [bruno-user-guide](#bruno-user-guide)
+  - [为什么选择 bruno](#为什么选择-bruno)
+  - [安装 bruno](#安装-bruno)
+  - [客户端使用入门](#客户端使用入门)
+    - [默认主界面](#默认主界面)
+    - [API 请求集](#api-请求集)
+      - [创建 API 请求集](#创建-api-请求集)
+      - [打开 API 请求集](#打开-api-请求集)
+      - [导入 API collection](#导入-api-collection)
+      - [本地运行 API collection](#本地运行-api-collection)
+      - [导出 API 请求集](#导出-api-请求集)
+    - [API 请求](#api-请求)
+      - [新建 API 请求](#新建-api-请求)
+      - [编辑 API 请求](#编辑-api-请求)
+      - [运行 API 请求](#运行-api-请求)
+      - [API 请求生成代码](#api-请求生成代码)
+    - [编写 API 请求测试脚本](#编写-api-请求测试脚本)
+      - [API 请求 Assert](#api-请求-assert)
+        - [Assert 介绍](#assert-介绍)
+        - [Assert 示例](#assert-示例)
+          - [Assert status code 为 200](#assert-status-code-为-200)
+          - [Assert repsponse body 符合预期](#assert-repsponse-body-符合预期)
+        - [调试 Assert](#调试-assert)
+      - [API 请求 Tests](#api-请求-tests)
+        - [Tests 介绍](#tests-介绍)
+        - [Tests 示例](#tests-示例)
+          - [验证 status code 为 200](#验证-status-code-为-200)
+          - [Assert repsponse body 符合预期](#assert-repsponse-body-符合预期-1)
+        - [调试 Tests](#调试-tests)
+    - [环境变量](#环境变量)
+      - [创建环境变量](#创建环境变量)
+      - [环境变量 demo](#环境变量-demo)
+      - [使用环境变量](#使用环境变量)
+    - [测试脚本接口自动化](#测试脚本接口自动化)
+      - [前置条件](#前置条件)
+      - [接口自动化项目 demo](#接口自动化项目-demo)
 
 ## 为什么选择 bruno
 
@@ -136,7 +171,7 @@ Method：选择 API 请求的 Method
 - Assert 用来判断 API 请求的返回结果是否符合预期
 - Expr：输入预期结果的表达式，可以是 API 请求的返回结果的某个字段的值，可输入两种类型：Status Code 和 Response Body
  Status Code：判断 API 请求的返回状态码是否符合预期  (默认为 200)
- Response Body：判断 API 请求的返回结果是否符合预期 (默认为 true)
+  Response Body：判断 API 请求的返回结果是否符合预期 (默认为 true)
 
 - Operator：输入预期结果的验证方式。支持多种判断方式：Equal 和 Not Equal 等
   Equal：判断 API 请求的返回结果是否等于预期结果
@@ -288,7 +323,7 @@ bruno-test   //项目主文件夹
 
 ```bash
  cd api-collects
- ```
+```
 
  ```javascript
  bruno run --env demo
