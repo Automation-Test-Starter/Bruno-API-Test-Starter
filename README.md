@@ -37,6 +37,14 @@
     - [测试脚本接口自动化](#测试脚本接口自动化)
       - [前置条件](#前置条件)
       - [接口自动化项目 demo](#接口自动化项目-demo)
+    - [接入 CI](#接入-ci)
+      - [接入 github action](#接入-github-action)
+      - [测试报告---TODO](#测试报告---todo)
+    - [bruno 更多用法---TODO](#bruno-更多用法---todo)
+    - [Postman 脚本迁移](#postman-脚本迁移)
+      - [API 请求集迁移](#api-请求集迁移)
+      - [环境变量迁移](#环境变量迁移)
+      - [测试脚本迁移参考](#测试脚本迁移参考)
 
 ## 为什么选择 bruno
 
@@ -50,7 +58,7 @@
 
 离线客户端，无云同步功能计划
 
-支持 Postman/insomina 脚本导入（只能导入 API 请求脚本，无法导入测试脚本/环境变量）
+支持 Postman/insomina 脚本导入（只能导入 API 请求脚本，无法导入测试脚本）
 
 社区相对活跃，[产品开发路线图](https://github.com/usebruno/bruno/discussions/384)清晰
 
@@ -327,3 +335,102 @@ bruno-test   //项目主文件夹
 - 运行结果如下
 
 ![cli-demo](/readme_pictures/cli-demo.png)
+
+### 接入 CI
+
+#### 接入 github action
+
+> 以 github action 为例，其他 CI 工具类似
+
+- [x] 前置准备：在项目 package.json 文件中添加如下脚本
+
+```json
+"test": "bru run --env demo"
+```
+
+- [x] 在项目根目录下创建 .github/workflows 文件夹
+- [x] 在 .github/workflows 文件夹下创建 main.yml 文件
+- [x] main.yml 文件内容如下
+
+```yaml
+name: bruno cli CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run_bruno_api_test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: npm install
+    - name: run tests
+      run: npm run test
+```
+
+- [x] 提交代码到 github，会自动触发 github action
+- [x] 查看 github action 运行结果，如图示例：
+
+![cli-demo1](/readme_pictures/cli-demo1.png)
+> 可拉取本项目代码进行参考：<https://github.com/dengnao-tw/Bruno-API-Test-Starter>
+
+#### 测试报告---TODO
+
+### bruno 更多用法---TODO
+
+### Postman 脚本迁移
+
+#### API 请求集迁移
+
+- 在首页点击‘Import Collection’链接，打开导入 API collection 的弹窗
+- 点击选择 Postman Collection 的链接，再选在已存在的 Postman 请求集文件路径
+- 即可导入 Postman 的请求集
+- 但是目前只支持导入 API 请求，无法导入测试脚本，如图所示（但不影响请求调用）
+![postman1](/readme_pictures/postman1.png)
+![bruno1](/readme_pictures/bruno1.png)
+
+#### 环境变量迁移
+
+- 在首页选择刚才导入的 Postman 请求
+- 点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 configure 按钮即可打开环境变量管理弹窗
+- 点击‘Import Environment’链接，打开导入 Environment 的弹窗
+- 点击选择 Postman Environment 的链接，再选在已存在的 Postman 环境变量文件路径
+- 即可导入 Postman 的环境变量
+![postman2](/readme_pictures/postman2.png)
+![bruno2](/readme_pictures/bruno2.png)
+
+#### 测试脚本迁移参考
+
+>两个工具测试脚本的语法存在一部分差异，需要手动修改
+
+- Postman 测试脚本语法参考：<https://learning.postman.com/docs/writing-scripts/test-scripts/>
+- Postman 测试脚本示例
+
+```javascript
+pm.test("res.status should be 200", function () {
+  pm.response.to.have.status(200);
+});
+pm.test("res.body should be correct", function() {
+  var data = pm.response.json();
+  pm.expect(data.id).to.equal(1);
+  pm.expect(data.title).to.contains('provident');
+});
+```
+
+- Bruno 测试脚本语法参考：<https://docs.usebruno.com/testing/introduction.html>
+- Bruno 测试脚本示例
+
+```javascript
+test("res.status should be 200", function() {
+  const data = res.getBody();
+  expect(res.getStatus()).to.equal(200);
+});
+test("res.body should be correct", function() {
+  const data = res.getBody();
+  expect(data.id).to.equal(1);
+expect(data.title).to.contains('provident');
+});
+```
