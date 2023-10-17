@@ -30,10 +30,10 @@
           - [验证 status code 为 200](#验证-status-code-为-200)
           - [Assert repsponse body 符合预期](#assert-repsponse-body-符合预期-1)
         - [调试 Tests](#调试-tests)
-    - [环境变量](#环境变量)
-      - [创建环境变量](#创建环境变量)
-      - [环境变量 demo](#环境变量-demo)
-      - [使用环境变量](#使用环境变量)
+      - [环境变量](#环境变量)
+        - [创建环境变量](#创建环境变量)
+        - [环境变量 demo](#环境变量-demo)
+        - [使用环境变量](#使用环境变量)
     - [测试脚本接口自动化](#测试脚本接口自动化)
       - [前置条件](#前置条件)
       - [接口自动化项目 demo](#接口自动化项目-demo)
@@ -268,9 +268,9 @@ expect(data.title).to.contains('provident');
 
 ![tests-demo](/readme_pictures/tests-demo.png)
 
-### 环境变量
+#### 环境变量
 
-#### 创建环境变量
+##### 创建环境变量
 
 - 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)
 - 选择想要创建环境变量的 API 请求
@@ -278,7 +278,7 @@ expect(data.title).to.contains('provident');
 - 弹窗上点击 Create Environment 按钮，输入环境变量的名字，点击 create 按钮即可创建环境变量
 - 然后在弹窗上点击 Add Variable 按钮，输入环境变量的 key 和 value，点击 Save 按钮即可添加环境变量
 
-#### 环境变量 demo
+##### 环境变量 demo
 
 > 需求：创建一个 demo 环境变量，里面包含一个 key 为 host，value 为 <https://jsonplaceholder.typicode.com> 的环境变量
 
@@ -289,7 +289,7 @@ expect(data.title).to.contains('provident');
 - 如下图所示
 ![env-intro](/readme_pictures/env-intro.png)
 
-#### 使用环境变量
+##### 使用环境变量
 
 - 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)，也创建了 demo 环境变量
 - 选择想要使用环境变量的 API 请求
