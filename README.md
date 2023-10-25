@@ -30,21 +30,22 @@
           - [验证 status code 为 200](#验证-status-code-为-200)
           - [Assert repsponse body 符合预期](#assert-repsponse-body-符合预期-1)
         - [调试 Tests](#调试-tests)
-      - [环境变量](#环境变量)
-        - [创建环境变量](#创建环境变量)
-        - [环境变量 demo](#环境变量-demo)
-        - [使用环境变量](#使用环境变量)
-    - [测试脚本接口自动化](#测试脚本接口自动化)
-      - [前置条件](#前置条件)
-      - [接口自动化项目 demo](#接口自动化项目-demo)
-    - [接入 CI](#接入-ci)
-      - [接入 github action](#接入-github-action)
-      - [测试报告---TODO](#测试报告---todo)
-    - [bruno 更多用法---TODO](#bruno-更多用法---todo)
-    - [Postman 脚本迁移](#postman-脚本迁移)
-      - [API 请求集迁移](#api-请求集迁移)
-      - [环境变量迁移](#环境变量迁移)
-      - [测试脚本迁移参考](#测试脚本迁移参考)
+  - [环境变量](#环境变量)
+    - [创建环境变量](#创建环境变量)
+    - [环境变量 demo](#环境变量-demo)
+    - [使用环境变量](#使用环境变量)
+  - [测试脚本接口自动化](#测试脚本接口自动化)
+    - [前置条件](#前置条件)
+    - [接口自动化项目 demo](#接口自动化项目-demo)
+  - [接入 CI](#接入-ci)
+    - [接入 github action](#接入-github-action)
+  - [测试报告---TODO](#测试报告---todo)
+  - [bruno 更多用法---TODO](#bruno-更多用法---todo)
+  - [Postman 脚本迁移](#postman-脚本迁移)
+    - [API 请求集迁移](#api-请求集迁移)
+    - [环境变量迁移](#环境变量迁移)
+    - [测试脚本迁移参考](#测试脚本迁移参考)
+  - [参考资料](#参考资料)
 
 ## 为什么选择 bruno
 
@@ -268,9 +269,9 @@ expect(data.title).to.contains('provident');
 
 ![tests-demo](/readme_pictures/tests-demo.png)
 
-#### 环境变量
+## 环境变量
 
-##### 创建环境变量
+### 创建环境变量
 
 - 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)
 - 选择想要创建环境变量的 API 请求
@@ -278,7 +279,7 @@ expect(data.title).to.contains('provident');
 - 弹窗上点击 Create Environment 按钮，输入环境变量的名字，点击 create 按钮即可创建环境变量
 - 然后在弹窗上点击 Add Variable 按钮，输入环境变量的 key 和 value，点击 Save 按钮即可添加环境变量
 
-##### 环境变量 demo
+### 环境变量 demo
 
 > 需求：创建一个 demo 环境变量，里面包含一个 key 为 host，value 为 <https://jsonplaceholder.typicode.com> 的环境变量
 
@@ -289,23 +290,23 @@ expect(data.title).to.contains('provident');
 - 如下图所示
 ![env-intro](/readme_pictures/env-intro.png)
 
-##### 使用环境变量
+### 使用环境变量
 
 - 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)，也创建了 demo 环境变量
 - 选择想要使用环境变量的 API 请求
 - 点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 demo 按钮即可使用 demo 环境变量
 - 然后在 API 请求的 URL 变更为输入 {{host}}/posts/1 即可使用环境变量
 
-### 测试脚本接口自动化
+## 测试脚本接口自动化
 
-#### 前置条件
+### 前置条件
 
 - [x] 已创建了 API 请求集（示例名为:api-collects）
 - [x] 已创建了 API 请求（示例名为:api request1）
 - [x] 已创建了环境变量（示例名为:demo）
 - [x] 也为 API 请求编写了 assert 或者 tests 脚本
 
-#### 接口自动化项目 demo
+### 接口自动化项目 demo
 
 - [x] 安装 node.js
 - [x] 安装 npm
@@ -336,9 +337,9 @@ bruno-test   //项目主文件夹
 
 ![cli-demo](/readme_pictures/cli-demo.png)
 
-### 接入 CI
+## 接入 CI
 
-#### 接入 github action
+### 接入 github action
 
 > 以 github action 为例，其他 CI 工具类似
 
@@ -377,13 +378,13 @@ jobs:
 ![cli-demo1](/readme_pictures/cli-demo1.png)
 > 可拉取本项目代码进行参考：<https://github.com/dengnao-tw/Bruno-API-Test-Starter>
 
-#### 测试报告---TODO
+## 测试报告---TODO
 
-### bruno 更多用法---TODO
+## bruno 更多用法---TODO
 
-### Postman 脚本迁移
+## Postman 脚本迁移
 
-#### API 请求集迁移
+### API 请求集迁移
 
 - 在首页点击‘Import Collection’链接，打开导入 API collection 的弹窗
 - 点击选择 Postman Collection 的链接，再选在已存在的 Postman 请求集文件路径
@@ -392,7 +393,7 @@ jobs:
 ![postman1](/readme_pictures/postman1.png)
 ![bruno1](/readme_pictures/bruno1.png)
 
-#### 环境变量迁移
+### 环境变量迁移
 
 - 在首页选择刚才导入的 Postman 请求
 - 点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 configure 按钮即可打开环境变量管理弹窗
@@ -402,7 +403,7 @@ jobs:
 ![postman2](/readme_pictures/postman2.png)
 ![bruno2](/readme_pictures/bruno2.png)
 
-#### 测试脚本迁移参考
+### 测试脚本迁移参考
 
 >两个工具测试脚本的语法存在一部分差异，需要手动修改
 
@@ -434,3 +435,8 @@ test("res.body should be correct", function() {
 expect(data.title).to.contains('provident');
 });
 ```
+
+## 参考资料
+
+- [bruno 官方文档](https://docs.usebruno.com/)
+- [bruno 官方 github](https：//github.com/usebruno/bruno)

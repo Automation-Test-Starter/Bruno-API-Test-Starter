@@ -30,21 +30,22 @@
           - [Verify status code is 200](#verify-status-code-is-200)
           - [Verify repsponse body as expected](#verify-repsponse-body-as-expected)
         - [Debugging Tests](#debugging-tests)
-      - [environment variables](#environment-variables)
-        - [Creating Environment Variables](#creating-environment-variables)
-        - [environment variable demo](#environment-variable-demo)
-        - [Using Environment Variables](#using-environment-variables)
-    - [Test script automation](#test-script-automation)
-      - [Pre-conditions](#pre-conditions)
-      - [api automation project demo](#api-automation-project-demo)
-    - [Getting into CI](#getting-into-ci)
-      - [Getting into github action](#getting-into-github-action)
-      - [Test report---TODO](#test-report---todo)
-    - [bruno More usage---TODO](#bruno-more-usage---todo)
-    - [Postman script migration](#postman-script-migration)
-      - [API Request Collection Migration](#api-request-collection-migration)
-      - [Environment Variable Migration](#environment-variable-migration)
-      - [Test Script Migration Reference](#test-script-migration-reference)
+  - [environment variables](#environment-variables)
+    - [Creating Environment Variables](#creating-environment-variables)
+    - [environment variable demo](#environment-variable-demo)
+    - [Using Environment Variables](#using-environment-variables)
+  - [Test script automation](#test-script-automation)
+    - [Pre-conditions](#pre-conditions)
+    - [api automation project demo](#api-automation-project-demo)
+  - [CI/CD Integration](#cicd-integration)
+    - [Integration github action](#integration-github-action)
+  - [Test report---TODO](#test-report---todo)
+  - [bruno More usage---TODO](#bruno-more-usage---todo)
+  - [Postman script migration](#postman-script-migration)
+    - [API Request Collection Migration](#api-request-collection-migration)
+    - [Environment Variable Migration](#environment-variable-migration)
+    - [Test Script Migration Reference](#test-script-migration-reference)
+  - [reference](#reference)
 
 ## why bruno
 
@@ -268,9 +269,9 @@ expect(data.title).to.contains('provident');
 
 ![tests-demo](/readme_pictures/tests-demo.png)
 
-#### environment variables
+## environment variables
 
-##### Creating Environment Variables
+### Creating Environment Variables
 
 - Prerequisites: An API request set and an API request have already been created (see Creating an API request set and New API request above).
 - Select the API request for which you want to create an environment variable
@@ -278,7 +279,7 @@ expect(data.title).to.contains('provident');
 - Click Create Environment button on the popup window, enter the name of the environment variable and click create button to create the environment variable.
 - Then click Add Variable button on the popup window, enter the key and value of the environment variable, and click Save button to add the environment variable.
 
-##### environment variable demo
+### environment variable demo
 
 > Requirement: Create a demo environment variable that contains an environment variable with key host and value <https://jsonplaceholder.typicode.com>.
 
@@ -289,23 +290,23 @@ expect(data.title).to.contains('provident');
 - As shown in the following figure
 ! [env-intro](/readme_pictures/env-intro.png)
 
-##### Using Environment Variables
+### Using Environment Variables
 
 - Prerequisites: You have already created an API request set and an API request (see Creating an API request set and creating a new API request above), and you have also created a demo environment variable.
 - Select the API request for which you want to use environment variables
 - Click the 'No Environment' link in the top right corner of the page (default is No Environment), and select the demo button in the menu to use the demo environment variable.
 - Then change the URL of the API request to {{host}}/posts/1 to use the environment variable.
 
-### Test script automation
+## Test script automation
 
-#### Pre-conditions
+### Pre-conditions
 
 - [x] API request set has been created (example named :api-collects)
 - [x] API request has been created (example name: api request1)
 - [x] an environment variable has been created (example name: demo)
 - [x] has also written an assert or tests script for the API request
 
-#### api automation project demo
+### api automation project demo
 
 - [x] Installed node.js
 - [x] Install npm
@@ -336,9 +337,9 @@ bruno-test   //项目主文件夹
 
 ![cli-demo](/readme_pictures/cli-demo.png)
 
-### Getting into CI
+## CI/CD Integration
 
-#### Getting into github action
+### Integration github action
 
 > Take github action as an example, other CI tools are similar.
 
@@ -377,13 +378,13 @@ jobs:
 ![cli-demo1](/readme_pictures/cli-demo1.png)
 > The code for this project can be pulled for reference:<https://github.com/dengnao-tw/Bruno-API-Test-Starter>
 
-#### Test report---TODO
+## Test report---TODO
 
-### bruno More usage---TODO
+## bruno More usage---TODO
 
-### Postman script migration
+## Postman script migration
 
-#### API Request Collection Migration
+### API Request Collection Migration
 
 - Click on the 'Import Collection' link on the home page to open the Import API collection popup window.
 - Click on the Select Postman Collection link and select the path to an existing Postman request collection file.
@@ -392,7 +393,7 @@ jobs:
 ![postman1](/readme_pictures/postman1.png)
 ![bruno1](/readme_pictures/bruno1.png)
 
-#### Environment Variable Migration
+### Environment Variable Migration
 
 - Select the Postman request you just imported on the home page.
 - Click the 'No Environment' link in the upper right corner of the page (default is No Environment), and select the configure button in the menu to open the environment variable management popup window.
@@ -403,7 +404,7 @@ jobs:
 ![postman2](/readme_pictures/postman2.png)
 ![bruno2](/readme_pictures/bruno2.png)
 
-#### Test Script Migration Reference
+### Test Script Migration Reference
 
 >The syntax of the test scripts for the two tools is partially different and needs to be modified manually
 
@@ -435,3 +436,8 @@ test("res.body should be correct", function() {
 expect(data.title).to.contains('provident');
 });
 ```
+
+## reference
+
+- [bruno Official document](https://docs.usebruno.com/)
+- [bruno Official github](https：//github.com/usebruno/bruno)
