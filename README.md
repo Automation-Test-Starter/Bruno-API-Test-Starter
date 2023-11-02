@@ -1,6 +1,7 @@
+<div align="right"><strong>🇨🇳中文</a></strong>  | <strong><a href="./README_EN.md">🇬🇧English</strong></div>
+
 # bruno-user-guide
 
-**中文** | [English](/README_EN.md)
 - [bruno-user-guide](#bruno-user-guide)
   - [为什么选择 bruno](#为什么选择-bruno)
   - [安装 bruno](#安装-bruno)
