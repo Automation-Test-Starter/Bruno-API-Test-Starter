@@ -1,244 +1,244 @@
-<div align="right"><strong>🇨🇳中文</a></strong>  | <strong><a href="./README_EN.md">🇬🇧English</strong></div>
+<div align="right"><strong><a href="./README_ZH.md">🇨🇳中文</a></strong>  | <strong>🇬🇧English</strong></div>
 
 # bruno-user-guide
 
 - [bruno-user-guide](#bruno-user-guide)
-  - [为什么选择 bruno](#为什么选择-bruno)
-  - [安装 bruno](#安装-bruno)
-  - [客户端使用入门](#客户端使用入门)
-    - [默认主界面](#默认主界面)
-    - [API 请求集](#api-请求集)
-      - [创建 API 请求集](#创建-api-请求集)
-      - [打开 API 请求集](#打开-api-请求集)
-      - [导入 API collection](#导入-api-collection)
-      - [本地运行 API collection](#本地运行-api-collection)
-      - [导出 API 请求集](#导出-api-请求集)
-    - [API 请求](#api-请求)
-      - [新建 API 请求](#新建-api-请求)
-      - [编辑 API 请求](#编辑-api-请求)
-      - [运行 API 请求](#运行-api-请求)
-      - [API 请求生成代码](#api-请求生成代码)
-    - [编写 API 请求测试脚本](#编写-api-请求测试脚本)
-      - [API 请求 Assert](#api-请求-assert)
-        - [Assert 介绍](#assert-介绍)
-        - [Assert 示例](#assert-示例)
-          - [Assert status code 为 200](#assert-status-code-为-200)
-          - [Assert repsponse body 符合预期](#assert-repsponse-body-符合预期)
-        - [调试 Assert](#调试-assert)
-      - [API 请求 Tests](#api-请求-tests)
-        - [Tests 介绍](#tests-介绍)
-        - [Tests 示例](#tests-示例)
-          - [验证 status code 为 200](#验证-status-code-为-200)
-          - [Assert repsponse body 符合预期](#assert-repsponse-body-符合预期-1)
-        - [调试 Tests](#调试-tests)
-  - [环境变量](#环境变量)
-    - [创建环境变量](#创建环境变量)
-    - [环境变量 demo](#环境变量-demo)
-    - [使用环境变量](#使用环境变量)
-  - [测试脚本接口自动化](#测试脚本接口自动化)
-    - [前置条件](#前置条件)
-    - [接口自动化项目 demo](#接口自动化项目-demo)
-  - [接入 CI](#接入-ci)
-    - [接入 github action](#接入-github-action)
-  - [测试报告---TODO](#测试报告---todo)
-  - [bruno 更多用法---TODO](#bruno-更多用法---todo)
-  - [Postman 脚本迁移](#postman-脚本迁移)
-    - [API 请求集迁移](#api-请求集迁移)
-    - [环境变量迁移](#环境变量迁移)
-    - [测试脚本迁移参考](#测试脚本迁移参考)
-  - [参考资料](#参考资料)
+  - [why bruno](#why-bruno)
+  - [Install bruno](#install-bruno)
+  - [Getting Started](#getting-started)
+    - [Default main interface](#default-main-interface)
+    - [API collection](#api-collection)
+      - [Create API collection](#create-api-collection)
+      - [Open API collection](#open-api-collection)
+      - [Import API collection](#import-api-collection)
+      - [RUN API collection](#run-api-collection)
+      - [Export API collection](#export-api-collection)
+    - [API request](#api-request)
+      - [Create API request](#create-api-request)
+      - [Edit API request](#edit-api-request)
+      - [RUN API request](#run-api-request)
+      - [API request generate code](#api-request-generate-code)
+    - [Write API request test scripts](#write-api-request-test-scripts)
+      - [API request Assert](#api-request-assert)
+        - [Introducing Assert](#introducing-assert)
+        - [Assert demo](#assert-demo)
+          - [Assert status code is 200](#assert-status-code-is-200)
+          - [Assert repsponse body as expected](#assert-repsponse-body-as-expected)
+        - [Debug Assert](#debug-assert)
+      - [API request Tests](#api-request-tests)
+        - [Introduction Tests](#introduction-tests)
+        - [Tests demo](#tests-demo)
+          - [Verify status code is 200](#verify-status-code-is-200)
+          - [Verify repsponse body as expected](#verify-repsponse-body-as-expected)
+        - [Debugging Tests](#debugging-tests)
+  - [environment variables](#environment-variables)
+    - [Creating Environment Variables](#creating-environment-variables)
+    - [environment variable demo](#environment-variable-demo)
+    - [Using Environment Variables](#using-environment-variables)
+  - [Test script automation](#test-script-automation)
+    - [Pre-conditions](#pre-conditions)
+    - [api automation project demo](#api-automation-project-demo)
+  - [CI/CD Integration](#cicd-integration)
+    - [Integration github action](#integration-github-action)
+  - [Test report---TODO](#test-report---todo)
+  - [bruno More usage---TODO](#bruno-more-usage---todo)
+  - [Postman script migration](#postman-script-migration)
+    - [API Request Collection Migration](#api-request-collection-migration)
+    - [Environment Variable Migration](#environment-variable-migration)
+    - [Test Script Migration Reference](#test-script-migration-reference)
+  - [reference](#reference)
 
-## 为什么选择 bruno
+## why bruno
 
-官方说明：<https://github.com/usebruno/bruno/discussions/269>
+Official description: <https://github.com/usebruno/bruno/discussions/269>
 
-与 postman 的对比：<https://www.usebruno.com/compare/bruno-vs-postman>
+Comparison with postman: <https://www.usebruno.com/compare/bruno-vs-postman>
 
-开源，MIT License
+Open source, MIT License
 
-客户端全平台支持 (Mac/linux/Windows)
+Client platform support (Mac/linux/Windows)
 
-离线客户端，无云同步功能计划
+Offline client, no cloud synchronization plan
 
-支持 Postman/insomina 脚本导入（只能导入 API 请求脚本，无法导入测试脚本）
+Supports Postman/insomina script import (only API request scripts can be imported, not test scripts)
 
-社区相对活跃，[产品开发路线图](https://github.com/usebruno/bruno/discussions/384)清晰
+Relatively active community and clear [product development roadmap](https://github.com/usebruno/bruno/discussions/384).
 
-## 安装 bruno
+## Install bruno
 
 Download link: <https://www.usebruno.com/downloads>
 
-Mac 电脑推荐 brew 命令下载
+Mac computer recommended brew command download
 
 ​    `brew install Bruno`
 
-## 客户端使用入门
+## Getting Started
 
-### 默认主界面
+### Default main interface
 
 ![homepage](/readme_pictures/homepage.png)
 
-### API 请求集
+### API collection
 
-#### 创建 API 请求集
+#### Create API collection
 
-- 首页点击‘Create Collection’链接，打开创建 API 请求集的弹窗
+- On the home page, click on the 'Create Collection' link to open the Create API Request Collection pop-up window.
 
-- 弹窗上依次输入
+- On the popup window, enter
 
-  Name: 输入 API 请求集的名字
+  Name: input the name of the API request collection
 
-  Location：输入想要保存 API 请求集文件的文件夹路径 (建议选择此项目所在路径)
+  Location: input the path of the folder where you want to save the API request collection files (we suggest you choose the path where this project is located).
 
-  Folder Name：可输入 API 请求集名字（会在刚才选择的路径下创建一个对应名字的文件夹）
+  Folder Name: you can enter the name of the API request set (a folder with the corresponding name will be created under the path you just selected).
 
-- 点击 Create 按钮即可完成 API 请求集的创建，并展示在界面上 (左侧 请求集列表会展示新建的 API 请求集的信息)
+- Click Create button to finish creating the API request set and display it on the interface (the list of newly created API request set will be displayed on the left side).
 
 ![create-collection](/readme_pictures/create-collection.png)
 
-#### 打开 API 请求集
+#### Open API collection
 
-- 首页点击‘Open Collection’链接，打开选择已有的 bruno 格式的 API 请求集文件夹
-- 点击 open 即可完成选择，并展示在界面上 (左侧 collection 列表会展示选择的 API 请求集信息)
+- Click on the 'Open Collection' link on the home page to open the folder of the selected API request collection in bruno format.
+- Click open to complete the selection and display it in the interface (the collection list on the left side will display the selected API request collection information).
 
-#### 导入 API collection
+#### Import API collection
 
-- 首页点击‘Import Collection’链接，打开导入 API collection 的弹窗 (支持 Bruno/Postman/Insomnia 的导入)
-- 弹窗上选择对应格式的的链接，再选在已存在的对应格式的文件路径
-- 点击 open 即可完成选择，并展示在界面上 (左侧 collection 列表会展示选择的 API collection 信息)
+- Click the 'Import Collection' link on the home page to open the popup window for importing API collections (Bruno/Postman/Insomnia are supported).
+- On the popup window, select the link of the corresponding format, and then select the path of the existing file of the corresponding format.
+- Click open to complete the selection and display it on the interface (the collection list on the left side will display the information of the selected API collection).
 
 ![import-collection](/readme_pictures/import-collection.png)
 
-#### 本地运行 API collection
+#### RUN API collection
 
-- 在主界面左侧 collection 列表选择想要运行的 API 请求集
-- 在菜单上选择 Run，右侧界面会打开 Runner tab，会展示所选择 API 请求集里面 requests 的一些信息
-- 点击 Run Collection 按钮即可本地运行 (运行完界面上会展示允许结果)
+- Select the API request set you want to run from the collection list on the left side of the main interface.
+- Select Run on the menu, the Runner tab will be opened on the right side of the interface, it will show some information about the requests in the selected API request collection.
+- Click on the Run Collection button to run it locally (you will see the allowed results on the screen after running).
 
-#### 导出 API 请求集
+#### Export API collection
 
-- 在主界面左侧 collection 列表选择想要运行的 API 请求集，右键打开菜单
-- 在菜单上选择 Export，再选择想要导出文件的路径即可完成导出 (导出文件也是为 json 格式)
+- Select the API request set you want to run from the collection list on the left side of the main interface, and right-click to open the menu.
+- Select Export on the menu, and then select the path of the file you want to export to complete the export (the exported file is also in json format).
 
-### API 请求
+### API request
 
-#### 新建 API 请求
+#### Create API request
 
-- 前置条件：已经创建了 API 请求集 (参考上面的创建 API 请求集)
-- 在主界面左侧 collection 列表选择想要新建 API 请求的 API 请求集
-- 在菜单上选择 New Request，右侧界面会打开 Request tab，会展示所选择 API 请求集里面 requests 的一些信息
-- 在 new Request 窗口上先选择请求类型：HTTP/GraphQL
-- 依次输入
-Name: 输入 API 请求的名字
-URL：输入 API 请求的 URL
-Method：选择 API 请求的 Method
-- 点击 Create 按钮即可完成 API 请求的创建，并展示在界面上 (左侧 请求集列表会展示新建的 API 请求的信息)
+- Pre-requisite: An API request collection has already been created (see Creating an API Request Collection above).
+- Select the API request set you want to create a new API request from the collection list on the left side of the main interface.
+- Select New Request on the menu, the right interface will open the Request tab, it will show some information of requests in the selected API request set.
+- On the new Request window, first select the request type: HTTP/GraphQL.
+- In the new Request window, first select the request type: HTTP/GraphQL.
+Name: Enter the name of the API request.
+URL: enter the URL of the API request
+Method: Select the Method of the API request.
+- Click Create button to finish creating the API request and display it on the interface (the left request set list will display the information of the newly created API request).
 
-#### 编辑 API 请求
+#### Edit API request
 
-- 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)
-- 在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求
-- 然后可以根据 API 请求类型再来编辑请求的不同字段
-  Body：输入 API 请求的 Body
+- Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).
+- Select the API request collection you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.
+- Then you can edit different fields of the request according to the type of API request.
+  Body: Enter the Body of the API request.
 
-  Headers：输入 API 请求的 Headers
+  Headers: Enter the headers of the API request.
 
-  Params：输入 API 请求的 Params
+  Params: Enter the Params of the API request.
 
-  Auth：输入 API 请求的 Auth
+  Auth: enter the Auth of the API request
 
-  Vars：输入 API 请求的 Vars
+  Vars: enter the Vars of the API request
   
-  Script：输入 API 请求的 Script
+  Script: enter the Script of the API request
 
-  Assert：输入 API 请求的 Assert
+  Assert: Enter the Assert of the API request.
   
-  Tests：输入 API 请求的 Tests
+  Tests: Enter the Tests of the API request.
 
-- 点击 Save 按钮即可完成 API 请求的编辑，并展示在界面上 (左侧 请求集列表会展示编辑的 API 请求的信息)
+- Click the Save button to finish editing the API request and display it on the interface (the list of request sets on the left side will display the information of the edited API request).
 
-#### 运行 API 请求
+#### RUN API request
 
-- 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)
-- 在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求
-- 点击 API url 编辑框后的向右按钮即可完成 API 请求的运行，并展示在界面上 (右侧 Request tab 会展示运行的 API 请求的信息)
+- Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).
+- In the collection list on the left side of the main interface, select the API request set that you want to edit the API request, and then select the API request that you want to edit.
+- Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).
 
-#### API 请求生成代码
+#### API request generate code
 
-- 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)
-- 在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求
-- 菜单右键选择 Generate Code，再选择想要生成代码的语言
-- Generate Code 窗口即可展示不同语言的请求代码
+- Pre-requisite: you have already created an API request collection and an API request (refer to Creating an API request collection and New API request above).
+- In the collection list on the left side of the main interface, select the API request set that you want to edit the API request, and then select the API request that you want to edit.
+- Right click on the menu and select Generate Code, then select the language you want to generate code for.
+- The Generate Code window will show the request code of different languages.
 
-### 编写 API 请求测试脚本
+### Write API request test scripts
 
-#### API 请求 Assert
+#### API request Assert
 
-##### Assert 介绍
+##### Introducing Assert
 
-- 打开任意的 API 请求，切换到 Assert tab
-- Assert tab 会展示 API 请求的 Assert 信息
-- Assert 用来判断 API 请求的返回结果是否符合预期
-- Expr：输入预期结果的表达式，可以是 API 请求的返回结果的某个字段的值，可输入两种类型：Status Code 和 Response Body
- Status Code：判断 API 请求的返回状态码是否符合预期  (默认为 200)
-  Response Body：判断 API 请求的返回结果是否符合预期 (默认为 true)
+- Open any API request and switch to the Assert tab.
+- The Assert tab displays the Assert information of the API request.
+- Assert is used to determine whether the result of the API request meets the expectation.
+- Expr: input the expression of expected result, it can be the value of a field of the API request, two types can be input: Status Code and Response Body.
+ Status Code: determine whether the returned status code of the API request meets the expectation (default is 200).
+  Response Body: determine whether the returned result of the API request meets the expectation (default is true).
 
-- Operator：输入预期结果的验证方式。支持多种判断方式：Equal 和 Not Equal 等
-  Equal：判断 API 请求的返回结果是否等于预期结果
-  Not Equal：判断 API 请求的返回结果是否不等于预期结果
-- Value：输入预期结果的值，支持两种预期结果的输入方式：Static 和 Dynamic
-  Static：输入预期结果的静态值
-  Dynamic：输入预期结果的动态值，可以是 API 请求的返回结果的某个字段的值
+- Operator: the validation method for inputting the expected result. Supports multiple judgment methods: Equal and Not Equal, etc.
+  Equal: determine whether the returned result of the API request is equal to the expected result.
+  Not Equal: determine if the returned result of the API request is not equal to the expected result.
+- Value: input the value of the expected result, supports two ways of inputting the expected result: Static and Dynamic.
+  Static: input the static value of the expected result.
+  Dynamic: input the dynamic value of the expected result, which can be the value of a field in the return result of the API request.
 
-##### Assert 示例
+##### Assert demo
 
-###### Assert status code 为 200  
+###### Assert status code is 200  
 
-- 以 <https://jsonplaceholder.typicode.com/posts/1> 为例 (该 API 请求返回的结果为：<https://jsonplaceholder.typicode.com/posts/1>) 我想验证该 API 请求的返回结果的 status 是否为 200，
-- 打开该 API 请求，切换到 Assert tab
-- 依次输入如下信息
+- Taking <https://jsonplaceholder.typicode.com/posts/1> as an example (the API request returns <https://jsonplaceholder.typicode.com/posts/1>) I want to verify that the API request returns a status is 200.
+- Open the API request and switch to the Assert tab.
+- Enter the following information
 Expr: res.status
-Operator：Equal
-Value：200
+Operator: Equal
+Value: 200
 
-###### Assert repsponse body 符合预期
+###### Assert repsponse body as expected
 
-- 以 <https://jsonplaceholder.typicode.com/posts/1> 为例 (该 API 请求返回的结果为：<https://jsonplaceholder.typicode.com/posts/1>) 我想验证该 API 请求的返回结果的 repsponse body 是否符合预期
-- 打开该 API 请求，切换到 Assert tab
-- Assert1 依次输入如下信息
+- Using <https://jsonplaceholder.typicode.com/posts/1> as an example (the API request returned <https://jsonplaceholder.typicode.com/posts/1>) I want to verify that the API request's repsponse body is as expected
+- Open the API request and switch to the Assert tab.
+- Assert1 Enter the following information in order
 Expr: res.body.id
-Operator：Equal
-Value：1
-- Assert2 依次输入如下信息
+Operator: Equal
+Value: 1
+- Assert2 Input the following information in order
 Expr: res.body.title
-Operator：contains
-Value：provident
+Operator: contains
+Value: provider
 
-##### 调试 Assert
+##### Debug Assert
 
-- 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)，也按照 demo 编写了对应的 Assert
-- 在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求
-- 点击 API url 编辑框后的向右按钮即可完成 API 请求的运行，并展示在界面上 (右侧 Request tab 会展示运行的 API 请求的信息)
-- 切换到 Tests tab，会展示 API 请求的 Tests 信息，里面也会包括请求的 Assert 信息
+- Pre-requisite: you have already created an API request set and an API request (refer to Creating an API request set and New API request above), and you have also written the corresponding Assert according to the demo.
+- Select the API request set you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.
+- Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).
+- Switch to the Tests tab to display the Tests information of the API request, which also includes the Assert information of the request.
 
 ![assert-demo](/readme_pictures/assert-demo.png)
 
-#### API 请求 Tests
+#### API request Tests
 
-##### Tests 介绍
+##### Introduction Tests
 
-- 打开任意的 API 请求，切换到 Tests tab
-- Tests tab 会展示 API 请求的 Tests 信息
-- Tests 用来编写 API 请求的测试脚本，目前较好支持 javascript 语言
-- Tests 里面可以编写多个测试脚本，每个测试脚本都可以单独运行
+- Open any API request and switch to the Tests tab.
+- Tests tab will show the Tests information of the API request.
+- Tests are used to write test scripts for API requests, currently javascript language is supported.
+- You can write multiple test scripts inside Tests, each test script can be run separately.
 
-##### Tests 示例
+##### Tests demo
 
-###### 验证 status code 为 200  
+###### Verify status code is 200  
 
-- 以 <https://jsonplaceholder.typicode.com/posts/1> 为例 (该 API 请求返回的结果为：<https://jsonplaceholder.typicode.com/posts/1>) 我想验证该 API 请求的返回结果的 status 是否为 200，
-- 打开该 API 请求，切换到 Tests tab
-- 输入如下脚本
+- Taking <https://jsonplaceholder.typicode.com/posts/1> as an example (the API request returns <https://jsonplaceholder.typicode.com/posts/1>), I want to verify that the API request returns a status is 200.
+- Open the API request and switch to the Tests tab.
+- Enter the following script
 
 ```javascript
 test("res.status should be 200", function() {
@@ -247,11 +247,11 @@ test("res.status should be 200", function() {
 });
 ```
 
-###### Assert repsponse body 符合预期
+###### Verify repsponse body as expected
 
-- 以 <https://jsonplaceholder.typicode.com/posts/1> 为例 (该 API 请求返回的结果为：<https://jsonplaceholder.typicode.com/posts/1>) 我想验证该 API 请求的返回结果的 repsponse body 是否符合预期
-- 打开该 API 请求，切换到 Tests tab
-- 输入如下脚本
+- Taking <https://jsonplaceholder.typicode.com/posts/1> as an example (the API request returned <https://jsonplaceholder.typicode.com/posts/1>) I want to verify that the repsponse body is as expected
+- Open the API request and switch to the Tests tab.
+- Enter the following script
   
 ```javascript
 test("res.body should be correct", function() {
@@ -261,61 +261,61 @@ expect(data.title).to.contains('provident');
 });
 ```
 
-##### 调试 Tests
+##### Debugging Tests
 
-- 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)，也按照 demo 编写了对应的 Tests
-- 在主界面左侧 collection 列表选择想要编辑 API 请求的 API 请求集，再选中想要编辑的 API 请求
-- 点击 API url 编辑框后的向右按钮即可完成 API 请求的运行，并展示在界面上 (右侧 Request tab 会展示运行的 API 请求的信息)
-- 切换到 Tests tab，会展示 API 请求的 Tests 信息，里面也会包括请求的 Tests 信息
+- Prerequisites: You have already created an API request set and an API request (refer to Creating an API Request Set and New API Request above), and you have also written the corresponding Tests according to the demo.
+- Select the API request set you want to edit in the collection list on the left side of the main interface, and then select the API request you want to edit.
+- Click the right button after the API url edit box to finish running the API request and display it on the interface (the Request tab on the right side will display the information of the running API request).
+- Switch to the Tests tab, it will show the Tests information of the API request, which will also include the requested Tests information.
 
 ![tests-demo](/readme_pictures/tests-demo.png)
 
-## 环境变量
+## environment variables
 
-### 创建环境变量
+### Creating Environment Variables
 
-- 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)
-- 选择想要创建环境变量的 API 请求
-- 点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 configure 按钮即可打开环境变量管理弹窗（支持创建新的环境变量和导入已有的环境变量）
-- 弹窗上点击 Create Environment 按钮，输入环境变量的名字，点击 create 按钮即可创建环境变量
-- 然后在弹窗上点击 Add Variable 按钮，输入环境变量的 key 和 value，点击 Save 按钮即可添加环境变量
+- Prerequisites: An API request set and an API request have already been created (see Creating an API request set and New API request above).
+- Select the API request for which you want to create an environment variable
+- Click the 'No Environment' link in the upper right corner of the page (default is No Environment) and select the configure button in the menu to open the environment variable management popup window (supports creating new environment variables and importing existing environment variables).
+- Click Create Environment button on the popup window, enter the name of the environment variable and click create button to create the environment variable.
+- Then click Add Variable button on the popup window, enter the key and value of the environment variable, and click Save button to add the environment variable.
 
-### 环境变量 demo
+### environment variable demo
 
-> 需求：创建一个 demo 环境变量，里面包含一个 key 为 host，value 为 <https://jsonplaceholder.typicode.com> 的环境变量
+> Requirement: Create a demo environment variable that contains an environment variable with key host and value <https://jsonplaceholder.typicode.com>.
 
-- 选择想要创建环境变量的 API 请求
-- 点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 configure 按钮即可打开环境变量管理弹窗
-- 弹窗上点击 Create Environment 按钮，输入环境变量的名字 demo，点击 create 按钮即可创建环境变量 demo
-- 选择 demo 环境变量，然后在页面上点击 Add Variable 按钮，输入环境变量的 key 为 host，value 为 <https://jsonplaceholder.typicode.com> ，点击 Save 按钮即可添加环境变量
-- 如下图所示
-![env-intro](/readme_pictures/env-intro.png)
+- Select the API request for which you want to create the environment variable
+- Click the 'No Environment' link in the upper right corner of the page (default is No Environment), and select the configure button in the menu to open the environment variable management popup.
+- Click the Create Environment button on the popup window, enter the name of the environment variable demo, and click the create button to create the environment variable demo.
+- Select the demo environment variable, and then click Add Variable button on the page, enter the key of the environment variable as host and the value as <https://jsonplaceholder.typicode.com>, and click Save button to add the environment variable.
+- As shown in the following figure
+! [env-intro](/readme_pictures/env-intro.png)
 
-### 使用环境变量
+### Using Environment Variables
 
-- 前置条件：已经创建了 API 请求集和 API 请求 (参考上面的创建 API 请求集和新建 API 请求)，也创建了 demo 环境变量
-- 选择想要使用环境变量的 API 请求
-- 点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 demo 按钮即可使用 demo 环境变量
-- 然后在 API 请求的 URL 变更为输入 {{host}}/posts/1 即可使用环境变量
+- Prerequisites: You have already created an API request set and an API request (see Creating an API request set and creating a new API request above), and you have also created a demo environment variable.
+- Select the API request for which you want to use environment variables
+- Click the 'No Environment' link in the top right corner of the page (default is No Environment), and select the demo button in the menu to use the demo environment variable.
+- Then change the URL of the API request to {{host}}/posts/1 to use the environment variable.
 
-## 测试脚本接口自动化
+## Test script automation
 
-### 前置条件
+### Pre-conditions
 
-- [x] 已创建了 API 请求集（示例名为:api-collects）
-- [x] 已创建了 API 请求（示例名为:api request1）
-- [x] 已创建了环境变量（示例名为:demo）
-- [x] 也为 API 请求编写了 assert 或者 tests 脚本
+- [x] API request set has been created (example named :api-collects)
+- [x] API request has been created (example name: api request1)
+- [x] an environment variable has been created (example name: demo)
+- [x] has also written an assert or tests script for the API request
 
-### 接口自动化项目 demo
+### api automation project demo
 
-- [x] 安装 node.js
-- [x] 安装 npm
-- [x] 新建项目文件夹（示例名为:bruno-test）
-- [x] 项目文件夹下执行 npm init 将项目初始化为 npm 项目
-- [x] 安装 @usebruno/cli 依赖 (脚本为：npm install @usebruno/cli)
-- [x] 打开保存 API 请求集的文件夹目录，将 api-collects 目录下的所有文件都复制到 bruno-test 项目目录下下
-- [x] 项目目录如下所示
+- [x] Installed node.js
+- [x] Install npm
+- [x] create a new project folder (example name: bruno-test)
+- [x] Execute npm init in the project folder to initialize the project as an npm project
+- [x] Install @usebruno/cli dependency (script: npm install @usebruno/cli)
+- [x] Open the folder directory where the API request sets are stored, and copy all the files in the api-collects directory to the bruno-test project directory
+- [x] The project directory looks like this
 
 ```javascript
 bruno-test   //项目主文件夹
@@ -328,31 +328,31 @@ bruno-test   //项目主文件夹
   package.json //npm 项目配置文件
 ```
 
-- [x] 运行接口自动化脚本
+- [x] Run the following command in the project directory to run the API request
 
  ```javascript
  bruno run --env demo
  ```
 
-- 运行结果如下
+- The result is as follows
 
 ![cli-demo](/readme_pictures/cli-demo.png)
 
-## 接入 CI
+## CI/CD Integration
 
-### 接入 github action
+### Integration github action
 
-> 以 github action 为例，其他 CI 工具类似
+> Take github action as an example, other CI tools are similar.
 
-- [x] 前置准备：在项目 package.json 文件中添加如下脚本
+- [x] Prepare: Add the following script to the project package.json file
 
 ```json
 "test": "bru run --env demo"
 ```
 
-- [x] 在项目根目录下创建 .github/workflows 文件夹
-- [x] 在 .github/workflows 文件夹下创建 main.yml 文件
-- [x] main.yml 文件内容如下
+- [x] Create .github/workflows folder in the project root folder
+- [x] Create main.yml file under .github/workflows folder
+- [x] The contents of the main.yml file are as follows
 
 ```yaml
 name: bruno cli CI
@@ -373,43 +373,44 @@ jobs:
       run: npm run test
 ```
 
-- [x] 提交代码到 github，会自动触发 github action
-- [x] 查看 github action 运行结果，如图示例：
+- [x] submit code to github, will automatically trigger github action
+- [x] View the result of the github action, as shown in the example:
 
 ![cli-demo1](/readme_pictures/cli-demo1.png)
-> 可拉取本项目代码进行参考：<https://github.com/dengnao-tw/Bruno-API-Test-Starter>
+> The code for this project can be pulled for reference:<https://github.com/dengnao-tw/Bruno-API-Test-Starter>
 
-## 测试报告---TODO
+## Test report---TODO
 
-## bruno 更多用法---TODO
+## bruno More usage---TODO
 
-## Postman 脚本迁移
+## Postman script migration
 
-### API 请求集迁移
+### API Request Collection Migration
 
-- 在首页点击‘Import Collection’链接，打开导入 API collection 的弹窗
-- 点击选择 Postman Collection 的链接，再选在已存在的 Postman 请求集文件路径
-- 即可导入 Postman 的请求集
-- 但是目前只支持导入 API 请求，无法导入测试脚本，如图所示（但不影响请求调用）
+- Click on the 'Import Collection' link on the home page to open the Import API collection popup window.
+- Click on the Select Postman Collection link and select the path to an existing Postman request collection file.
+- Then you can import Postman request collection.
+- However, only API requests can be imported, not test scripts, as shown in the figure (but it doesn't affect the request invocation).
 ![postman1](/readme_pictures/postman1.png)
 ![bruno1](/readme_pictures/bruno1.png)
 
-### 环境变量迁移
+### Environment Variable Migration
 
-- 在首页选择刚才导入的 Postman 请求
-- 点击页面右上角的‘No Environment’链接（默认为 No Environment），选择菜单中的 configure 按钮即可打开环境变量管理弹窗
-- 点击‘Import Environment’链接，打开导入 Environment 的弹窗
-- 点击选择 Postman Environment 的链接，再选在已存在的 Postman 环境变量文件路径
-- 即可导入 Postman 的环境变量
+- Select the Postman request you just imported on the home page.
+- Click the 'No Environment' link in the upper right corner of the page (default is No Environment), and select the configure button in the menu to open the environment variable management popup window.
+- Click on the 'Import Environment' link to open the Import Environment popup.
+- Click on the 'Postman Environment' link to open the Import Environment popup window Click on the 'Postman Environment' link and select the path to an existing Postman environment file
+- You can import Postman environment variables.
+
 ![postman2](/readme_pictures/postman2.png)
 ![bruno2](/readme_pictures/bruno2.png)
 
-### 测试脚本迁移参考
+### Test Script Migration Reference
 
->两个工具测试脚本的语法存在一部分差异，需要手动修改
+>The syntax of the test scripts for the two tools is partially different and needs to be modified manually
 
-- Postman 测试脚本语法参考：<https://learning.postman.com/docs/writing-scripts/test-scripts/>
-- Postman 测试脚本示例
+- Postman test script syntax reference: <https://learning.postman.com/docs/writing-scripts/test-scripts/>
+- Postman test script example
 
 ```javascript
 pm.test("res.status should be 200", function () {
@@ -422,8 +423,8 @@ pm.test("res.body should be correct", function() {
 });
 ```
 
-- Bruno 测试脚本语法参考：<https://docs.usebruno.com/testing/introduction.html>
-- Bruno 测试脚本示例
+- Bruno test script syntax reference: <https://docs.usebruno.com/testing/introduction.html>
+- Bruno test script example
 
 ```javascript
 test("res.status should be 200", function() {
@@ -437,7 +438,7 @@ expect(data.title).to.contains('provident');
 });
 ```
 
-## 参考资料
+## reference
 
-- [bruno 官方文档](https://docs.usebruno.com/)
-- [bruno 官方 github](https：//github.com/usebruno/bruno)
+- [bruno Official document](https://docs.usebruno.com/)
+- [bruno Official github](https：//github.com/usebruno/bruno)
