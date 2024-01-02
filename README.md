@@ -331,7 +331,7 @@ bruno-test   //项目主文件夹
 - [x] Run the following command in the project directory to run the API request
 
  ```javascript
- bruno run --env demo
+ bru run --env demo
  ```
 
 - The result is as follows
